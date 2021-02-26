@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Staff Module Management">
+    <title>Profile </title>
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.png">
+
+
+    <!-- Required External CSS -->
+    <link href="./assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="./assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <link href="./assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="./assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="./assets//css/admin.css">
+    <link rel="stylesheet" href="./assets/css/profile.css">
+    <link rel="stylesheet" href="./assets/css/dashforge.css">
+
+    <style>
+      *{
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+      }
+      body { -webkit-font-smoothing: antialiased; }
+      </style>
+
+  </head>
+  <body class="">
+    
+    <div class="container">
+      <div class="card card-section mg-t-100 mx-auto">
+        <div class="card-header">
+          <h1 class="font-weight-bold my-0">Update Profile Photo</h1>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-drop text-center ">
+                <div class="drop-zone p-1 rounded-circle">
+                  <div class="cell"> 
+                    <div class="drop-zone__prompt">
+                      <p class="p-14 my-0 text-gray-700">
+                        <img src="/assets/img/profile.svg" class="img-fluid"/>
+                      </p>
+                    </div>
+                    <input type="file" name="myFile" class="drop-zone__input">
+                  </div>
+                  <i class="fa fa-pen LeftIcon"></i>
+                </div>
+                <p class="tx-10 font-weight-bold mg-t-10 pd-l-15">CHOOSE IMAGE</p>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <h4 class="tx-bold">Mr Allen Freddy Boma</h4>
+              <p class="tx-14 tx-gray-900">Regional Head Investigation & Fraud Management North & West</p>
+              <div class="">
+                <p class="tx-12 mb-0 tx-gray-800">Kindly note that-</p>
+
+                <ol class="tx-12 pd-l-10 tx-gray-800">
+                  <li>
+                    This photo helps us to verify your identity.
+                  </li>
+                  <li>
+                    This action is required to move from this page and takes <span class="tx-bold">two</span> minutes.
+                  </li>
+                  <li>
+                    The maximum photo size is <span class="tx-bold">5mb.</span>
+                  </li>
+                  <li>
+                    The photo has to show your face very clearly.
+                  </li>
+                  <li>
+                    Click <span class="tx-bold">choose image</span> or <span>the pencil icon</span>  on the image to update profile photo.
+                  </li>
+                </ol>
+              </div>
+             
+              <div class="mg-t-50">
+                <button class="btn btn-primary tx-bold tx-20 w-75">Save Photo</button>
+              </div>
+            </div>
+            
+          </div>
+         
+        </div>
+      </div>
+      
+    </div>
+  
+
+    <script src="./assets/lib/jquery/jquery.min.js"></script>
+    <script src="./assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/lib/feather-icons/feather.min.js"></script>
+    <script src="./assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="./assets/js/dashforge.js"></script>
+    <script src="./assets/js/dashforge.aside.js"></script>
+    <script src="./assets/lib/js-cookie/js.cookie.js"></script>
+    <script>
+      document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+       const dropZoneElement = inputElement.closest(".drop-zone");
+
+       dropZoneElement.addEventListener("click", (e) => {
+         inputElement.click();
+       });
+
+       inputElement.addEventListener("change", (e) => {
+         if (inputElement.files.length) {
+           updateThumbnail(dropZoneElement, inputElement.files[0]);
+         }
+       });
+
+       dropZoneElement.addEventListener("dragover", (e) => {
+         e.preventDefault();
+         dropZoneElement.classList.add("drop-zone--over");
+       });
+
+       ["dragleave", "dragend"].forEach((type) => {
+         dropZoneElement.addEventListener(type, (e) => {
+           dropZoneElement.classList.remove("drop-zone--over");
+         });
+       });
+
+       dropZoneElement.addEventListener("drop", (e) => {
+         e.preventDefault();
+
+         if (e.dataTransfer.files.length) {
+           inputElement.files = e.dataTransfer.files;
+           updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+         }
+
+         dropZoneElement.classList.remove("drop-zone--over");
+       });
+     });
+
+     /**
+      * Updates the thumbnail on a drop zone element.
+      *
+      * @param {HTMLElement} dropZoneElement
+      * @param {File} file
+      */
+     function updateThumbnail(dropZoneElement, file) {
+       let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+       // First time - remove the prompt
+       if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+         dropZoneElement.querySelector(".drop-zone__prompt").remove();
+       }
+
+       // First time - there is no thumbnail element, so lets create it
+       if (!thumbnailElement) {
+         thumbnailElement = document.createElement("div");
+         thumbnailElement.classList.add("drop-zone__thumb");
+         dropZoneElement.appendChild(thumbnailElement);
+       }
+
+       thumbnailElement.dataset.label = file.name;
+
+       // Show thumbnail for image files
+       if (file.type.startsWith("image/")) {
+         const reader = new FileReader();
+
+         reader.readAsDataURL(file);
+         reader.onload = () => {
+           thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+         };
+       } else {
+         thumbnailElement.style.backgroundImage = null;
+       }
+     }
+
+ </script>
+
+  </body>
+</html>
