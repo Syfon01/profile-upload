@@ -20,14 +20,14 @@
 }
 
 .drop-zone__thumb {
-  width: 120px;
-  height: 120px;
+  width: 115px;
+  height: 115px;
   border-radius: 50%;
   overflow: hidden;
   background-color: #fff;
   background-size: cover;
   position: relative;
-  margin-left: -6px;
+  margin-left: -4px;
   margin-top: -4px;
 }
 
@@ -51,8 +51,8 @@
 }
 .LeftIcon {
   position: absolute;
-  top: calc(70% - 15px);
-  right: -1px;
+  top: calc(70% - 5px);
+  right: 2px;
   width: 25px;
   height: 25px;
   border-radius: 50%;
