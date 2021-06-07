@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Staff Module Management">
+    <title>Rewards and Sanction</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../assets/img/favicon.png">
+
+
+    <!-- Required External CSS -->
+    <link href="../../../assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="../../../assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../../../assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../../../assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="../../../assets/lib/select2/css/select2.min.css" rel="stylesheet">
+
+
+
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="../../../assets/css/custom.css">
+    <link rel="stylesheet" href="../../../assets/css/reward_sanction.css">
+    <link rel="stylesheet" href="../../../assets/css/dashforge.css">
+    <style>
+      *{
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+      }
+      body { -webkit-font-smoothing: antialiased; }
+      </style>
+  </head>
+  <body class="">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-white bd navbar-header-fixed pd-b-0">
+        <div class="container">
+          <a class="navbar-brand tx-bold tx-spacing--2 order-1" href="./index.html">            
+            <img src="../../../assets/img/connect.svg" alt="" class="img-fluid mr-4">
+          </a>
+          <button class="navbar-toggler order-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i data-feather="menu" class="wd-20 ht-20"></i>
+          </button>
+        
+          <div class="collapse navbar-collapse order-2" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active pb-2 mg-b-20 mg-lg-b-0">
+                <a class="nav-link header-link pd-b-0" href="./index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              
+            </ul>
+  
+            <ul class="navbar-nav ml-auto mr-5">
+              <li class="nav-item pd-t-10 pb-2">
+                <a href="http://" class="nav-link btn btn-sm btn-outline pd-y-2 w-lg-100 wd-md-100 logout-btn"><i data-feather="power" class="mr-2"></i>Sign out</a>
+              </li>
+              <li class="nav-item d-none d-md-none d-lg-block d-xl-block">
+                <a class="nav-link pb-2 navbar-brand navbar-right tx-bold tx-spacing--2 order-1 logo-link ml-5" href="/staff/home.html"><img src="../../../assets/img/logo.png" class="img-fluid"/></a>
+              </li>
+            </ul>
+  
+          </div>
+        </div>
+
+      </nav>
+    </header>
+    
+    <section class="secondary-bg">
+      <div class="container pt-md-5 mg-t-25 mg-md-t-0 mg-lg-t-35">
+        <button onclick="goBack()" class="btn btn-back tx-14 tx-semibold pd-l-0 pd-y-0"><i data-feather="arrow-left"></i> Go Back</button>
+        <p class="tx-32 tx-bold mb-0 mg-t-10">DC Sitting</p>
+        <hr class="mg-t-5">
+
+        <div class="row mg-t-25">
+          <div class="col-md-8 col-12">
+
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header bg-grey-100 pd-y-10 pd-md-x-25 pd-x-20 pd-b-10" id="headingOne">
+                  <div class="d-flex collapse-btn"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <p class="tx-12 font-weight-bold mb-0"><i class="fas fa-angle-down fa-2x mr-2 tx-muted"></i></p>
+                    <p class="tx-14 mb-0 tx-semibold modal-title">Schedule Details</p>
+                  </div>                   
+                </div>
+            
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body pd-md-x-25 pd-x-20">
+                    <div class="mg-b-25">
+                      <label for="formGroupExampleInput" class="d-block tx-bold mb-1 tx-grey-600 tx-uppercase tx-12">Title</label>
+                      <p class="tx-14 tx-grey-900 mb-0">Abscondment from office  - ngozi-ibeh chiamobi zion- a20474 - oyan business office</p>
+                     </div>
+                     <div class="mg-b-25">
+                        <label for="formGroupExampleInput" class="d-block tx-bold mb-1 tx-grey-600 tx-uppercase tx-12">Description</label>
+                        <p class="tx-14 tx-grey-900">The indicted staff allegedly colluded with officials of some local government councils in Borno state to divert salaries to accounts operated by the staff.
+                        </p>
+                      </div>
+                      <div class="mg-b-25">
+                        <div class="card card-body pd-15 bg-light-bluee">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <p class="tx-12 bg-grey-600 tx-uppercase mb-1 tx-semibold">When</p>
+                              <p class="tx-14 mb-0">Monday, Feb 23 2021</p>
+                              <p class="tx-12 tx-secondary mb-0"><i class="fa fa-stopwatch mr-1" aria-hidden="true"></i>10:00AM (GMT +1)</p>
+                            </div>
+                            <div class="col-md-8">
+                              <p class="tx-12 bg-grey-600 tx-uppercase mb-1 tx-semibold">Where</p>
+                              <p class="tx-14 mb-0">Microsoft Teams</p>
+                              <p class="tx-12 tx-secondary mb-0"><i class="fa fa-map-marker-alt mr-1" aria-hidden="true"></i>
+                                 <a href="https://teams.microsoft.com/dl/launch.er/..." target="_blank" rel="noopener noreferrer" class="tx-secondary" id="teamsLink">https://teams.microsoft.com/dl/launch.er/...</a> 
+                               <span class="cursor-point ml-2" onclick="mettingLink()"><i class="fa fa-copy tx-secondary"></i> <span class="tx-primary tx-12 tx-semibold">Copy Link</span></span> 
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mg-b-25">
+                        <label for="formGroupExampleInput" class="d-block tx-bold mb-1 tx-grey-600 tx-uppercase tx-12">Attached Reports</label>
+                        <div class="card card-body pd-x-15 pd-y-9 bg-grey-50">
+                          <div class="row justify-content-between">
+                            <div class="col-9 col-md-9">
+                              <div class="d-flex">
+                                <img src="../../../assets/img/icon/pdf-file.svg" class="img-fluid mr-2" alt="" srcset="">
+                                <div>
+                                  <p class="tx-14 tx-grey-900 mb-0">Investigation_report_424.pdf</p>
+                                  <label for="" class="tx-12 tx-grey-500 mb-0">Mar 4, 2021 9:19 AM <span class="ml-4">453KB</span></label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-3 col-md-2 pd-md-l-0">
+                              <a href="./view-open.html" class="btn btn-outlined-primary btn-sm pd-x-10 pd-y-4 tx-bold mg-t-5 w-100"> View</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="mg-b-25">
+                    <label for="formGroupExampleInput" class="d-block tx-medium mb-0 tx-grey-600 tx-uppercase tx-12">Involved Employees <span>(2)</span></label>
+                    <div class="row">
+                      <div class="col-md-6 col-12">
+                        <div class="d-flex mg-t-15">
+                          <div class="avatar avatar"><img src="../../../assets/img/activity1.png" class="rounded-circle" alt=""></div>
+                          <div class="ml-3 pd-t-3">
+                            <p class="tx-14 mb-0">Bayo Adeosun <span class="tx-grey-500 tx-12">(A28922)</span></p>
+                            <p class="tx-12 tx-grey-500 mb-0">Team Member, Operations Control</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <div class="d-flex mg-t-15">
+                          <div class="avatar avatar"><img src="../../../assets/img/birthday2.png" class="rounded-circle" alt=""></div>
+                          <div class="ml-3 pd-t-3">
+                            <p class="tx-14 mb-0">Funke Hussien <span class="tx-grey-500 tx-12">(A28922)</span></p>
+                            <p class="tx-12 tx-grey-500 mb-0">Team Member, Operations Control</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3">
+                <div class="card-header bg-grey-100 pd-y-10 pd-md-x-25 pd-x-20 pd-b-10" id="headingTwo">
+                  <div class="d-flex collapse-btn"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                    <p class="tx-12 font-weight-bold mb-0 panel-title"><i class="fas fa-angle-down fa-2x mr-2"></i></p>
+                    <p class="tx-14 mb-0 tx-semibold modal-title">Summary Report</p>
+                  </div>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body pd-md-x-25 pd-x-20">
+                    <div class="mg-b-25">
+                      <div class="row">
+                        <div class="col-md-8 col-12">
+                          <label for="formGroupExampleInput" class="d-block tx-bold mb-1 tx-grey-600 tx-uppercase tx-12">Comment/Remark</label>
+                          <p class="tx-14 tx-grey-900 mb-0">The indicted staff allegedly colluded with officials of some local government 
+                            councils in Borno state to divert salaries to accounts operated by the staff.</p>
+                        </div>
+                        <div class="col-md-4 col-12 mg-md-t-0 mg-t-20">
+                          <label for="formGroupExampleInput" class="d-block tx-bold mb-1 tx-grey-600 tx-uppercase tx-12">Date Summarized</label>
+                          <p class="tx-14 tx-grey-900 mb-0">Thur March 4, 2021</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mg-b-25">
+                      <label for="formGroupExampleInput" class="d-block tx-bold mb-1 tx-grey-600 tx-uppercase tx-12">Recording Link</label>
+                      <div class="row justify-content-between">
+                        <div class="col-9 col-md-9">
+                          <div class="d-flex">
+                            <img src="../../../assets/img/icon/Microsoft Teams.svg" class="img-fluid mr-2" alt="" srcset="">
+                            <div>
+                              <a href="https://web.microsoftstream.com/video/d8..." class="tx-14 tx-grey-900 mb-0" target="_blank">https://web.microsoftstream.com/video/d8...</a>
+                              <label for="" class="tx-12 tx-grey-500 mb-0">Mar 4, 2021 9:19 AM</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-3 col-md-2 pd-md-l-0">
+                          <a href="./view-open.html" class="btn btn-outlined-primary btn-sm pd-x-10 pd-y-4 tx-bold mg-t-5 w-100"> Open</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mg-b-25">
+                      <label for="formGroupExampleInput" class="d-block tx-bold mb-1 tx-grey-600 tx-uppercase tx-12">Attached Reports</label>
+                      <div class="card card-body pd-x-15 pd-y-9 bg-grey-50">
+                        <div class="row justify-content-between">
+                          <div class="col-9 col-md-9">
+                            <div class="d-flex">
+                              <img src="../../../assets/img/icon/pdf-file.svg" class="img-fluid mr-2" alt="" srcset="">
+                              <div>
+                                <p class="tx-14 tx-grey-900 mb-0">Investigation_report_424.pdf</p>
+                                <label for="" class="tx-12 tx-grey-500 mb-0">Mar 4, 2021 9:19 AM <span class="ml-4">453KB</span></label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-3 col-md-2 pd-md-l-0">
+                            <a href="./view-open.html" class="btn btn-outlined-primary btn-sm pd-x-10 pd-y-4 tx-bold mg-t-5 w-100"> View</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outlined-primary btn-sm pd-x-40 tx-semibold" data-toggle="modal" data-target="#declineDCModal" > <i class="fa fa-ban" aria-hidden="true"></i> Dispute DC Summary</button>
+                    <button type="button" class="btn btn-primary btn-sm pd-x-30 tx-semibold" data-toggle="modal" data-target="#acceptDCModal" > <i class="fa fa-check" aria-hidden="true"></i> Accept DC Summary</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+          <div class="col-md-4 col-12">
+            <div class="card card-body pd-15 bg-grey-50">
+              <div class="row">
+                <div class="col-md-6 col-5 mg-b-15">
+                  <p class="tx-12 tx-secondary mb-0">Status</p>
+                </div>
+               <div class="col-md-6 col-7 mg-b-15">
+                <span class="badge badge-green-400 tx-uppercase tx-11 tx-semibold">Active</span>
+               </div> 
+               
+               <div class="col-md-6 col-5">
+                <p class="tx-12 tx-secondary mb-0">Last Updated</p>
+              </div>
+             <div class="col-md-6 col-7">
+              <p class="tx-12 mb-0">Fri Mar 26, 2021</p>
+             </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+
+       
+         <!--confirm decline Modal -->
+         <div class="modal fade" id="declineDCModal" tabindex="-1" aria-labelledby="declineDCModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header pd-t-25 pd-md-x-30 pd-x-20 pd-b-10">
+                <div>
+                  <p class="tx-22 tx-semibold modal-title" id="declineDCModalLabel">Confirmation</p>
+                  <p class="tx-12 tx-grey-500 mb-0">You are about to dispute the DC Summary. Kindly input the reasons below to help the requester.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div> 
+
+              <div class="modal-body pd-md-x-30 pd-x-20">
+                
+                <form action="">
+                  <div class="form-group">
+                    <label class="tx-medium mb-1">Comments/Remarks</label>
+                    <textarea name="" id="" class="form-control" rows="4" placeholder="Enter Here"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer bg-modal-footer">
+                <button type="button" class="btn btn-outlined-primary btn-sm pd-x-40 tx-semibold" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm pd-x-40 tx-semibold" data-toggle="modal" data-target="#declineModal" data-dismiss="modal">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+           <!--confirm accept Modal -->
+           <div class="modal fade" id="acceptDCModal" tabindex="-1" aria-labelledby="acceptDCModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header pd-t-25 pd-md-x-30 pd-x-20 pd-b-10">
+                  <div>
+                    <p class="tx-22 tx-semibold modal-title" id="acceptDCModalLabel">Confirmation</p>
+                    <p class="tx-12 tx-grey-500 mb-0">You are about to accept the DC Summary. Would you like to give any comment/feedback?</p>
+                  </div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div> 
+  
+                <div class="modal-body pd-md-x-30 pd-x-20">
+                  
+                  <form action="">
+                    <div class="form-group">
+                      <label class="tx-medium mb-1">Comments/Remarks</label>
+                      <textarea name="" id="" class="form-control" rows="4" placeholder="Enter Here"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer bg-modal-footer">
+                  <button type="button" class="btn btn-outlined-primary btn-sm pd-x-40 tx-semibold" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary btn-sm pd-x-40 tx-semibold" data-toggle="modal" data-target="#acceptModal" data-dismiss="modal">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!--accept  Modal -->
+          <div class="modal fade" id="acceptModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header pd-y-10 bd-b-0">
+                  <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <div class="d-flex">
+                    <div>
+                      <img src="../../../assets/img/icon/Check.svg" alt="" srcset="" class="img-fluid wd-75 ht-75">
+                    </div>
+                    <div class="mg-l-10">
+                      <p class="tx-22 tx-bold mb-0 pd-t-20">DC Summary Accepted</p>
+                    </div>
+                  </div>
+                  <hr class="mg-t-10"/>
+                  <p class="tx-14">Your response has been sent to the Work Ethics Admin. </p>
+                </div>
+                <div class="modal-footer bg-modal-footer">
+                  <button type="button" class="btn btn-outlined-primary btn-sm pd-x-40" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+            <!--decline  Modal -->
+            <div class="modal fade" id="declineModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header pd-y-10 bd-b-0">
+                    <h5 class="modal-title"></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="d-flex">
+                      <div>
+                        <img src="../../../assets/img/icon/Cancel.svg" alt="" srcset="" class="img-fluid wd-75 ht-75">
+                      </div>
+                      <div class="mg-l-10">
+                        <p class="tx-22 tx-bold mb-0 pd-t-20">DC Summary Disputed</p>
+                      </div>
+                    </div>
+                    <hr class="mg-t-10"/>
+                    <p class="tx-14">Your response has been sent to the Work Ethics Admin. </p>
+                  </div>
+                  <div class="modal-footer bg-modal-footer">
+                    <button type="button" class="btn btn-outlined-primary btn-sm pd-x-40" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+
+      </div>
+
+      
+       
+    </section>
+    <section class="footer text-white">
+      <div class="container">
+        <p class="p-14 mb-0 text-capitalize">&copy; 2020 UBA Group. All Rights Reserved.</p>
+      </div>
+    </section>
+  
+    <script src="../../../assets/lib/jquery/jquery.min.js"></script>
+    <script src="../../../assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/lib/feather-icons/feather.min.js"></script>
+    <script src="../../../assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../../../assets/js/dashforge.js"></script>
+    <script src="../../../assets/lib/js-cookie/js.cookie.js"></script>
+    <script src="../../../assets/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../../assets/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="../../../assets/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../../assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+    <script src="../../../assets/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="../../../assets/lib/select2/js/select2.min.js"></script>
+
+
+
+<script>
+      $(document).ready( function () {
+   $('.display').DataTable({
+     "paging": true,
+     "info": true,
+     "responsive": true,
+     "aoColumnDefs": [{
+         "bSortable": false,
+         "aTargets": ["no-sort"]
+     }],
+     "language": {
+          "searchPlaceholder": 'Search...',
+          "sSearch": '',
+          "lengthMenu": '_MENU_ items/page',
+        },
+     "bInfo": true
+   });
+   
+   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+     $('.display:visible').each( function(e) {
+       $(this).DataTable().columns.adjust().responsive.recalc();
+     });
+   });
+      });
+</script>
+<!-- form action  -->
+<script>
+  $(document).ready(function() {
+     $('#employee,#employe').select2({
+       width: '100%' ,
+     });
+
+     $(".custom-file-input").on("change", function() {
+     var fileName = $(this).val().split("\\").pop();
+     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+   });
+ });
+</script>
+<script>
+   const goBack = () => window.history.back();
+    const mettingLink = () => {
+    let copyText = document.getElementById("teamsLink");
+    let textArea = document.createElement("textarea");
+      textArea.value = copyText.textContent;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("Copy");
+      textArea.remove();
+    alert("Copied the text: " + copyText.innerHTML);
+  }    
+</script>
+<script>
+  $(document).ready(function(){
+    // Add minus icon for collapse element which is open by default
+    $(".collapse.show").each(function(){
+      $(this).prev(".card-header").find(".fas").addClass("fa-angle-up").removeClass("fa-angle-down");
+    });
+    // Toggle plus minus icon on show hide of collapse element
+    $(".collapse").on('show.bs.collapse', function(){
+      $(this).prev(".card-header").find(".fas").removeClass("fa-angle-down").addClass("fa-angle-up");
+    }).on('hide.bs.collapse', function(){
+      $(this).prev(".card-header").find(".fas").removeClass("fa-angle-up").addClass("fa-angle-down");
+    });
+  });
+  </script>
+
+
+  </body>
+</html>

@@ -1,0 +1,28 @@
+.badge-warning{
+  background: rgba(245, 167, 0, 1)!important;
+  font-weight: 700!important;
+}
+.badge-blue{
+  background: rgba(110, 132, 163, 0.1)!important;
+  font-weight: 700!important;
+  font-size: 14px!important;
+}
+.border-b{
+  border: 1px solid rgba(227, 235, 246, 1)
+}
+.badge.badge-resign{
+  background: rgba(172, 11, 108, 1);
+  color: #fff;
+  font-size: 14px!important;
+}
+@media (max-width: 575.98px) { 
+  .upload-pad.mr-3{
+    margin-right: 0rem!important;
+  }
+}
+.collapse-btn:hover{
+  cursor: pointer;
+}
+.bg-blue{
+  background: rgba(44, 123, 229, 1);
+}

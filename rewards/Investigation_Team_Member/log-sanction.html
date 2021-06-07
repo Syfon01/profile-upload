@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Staff Module Management">
+    <title>Rewards and Sanction</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../assets/img/favicon.png">
+
+
+    <!-- Required External CSS -->
+    <link href="../../../assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="../../../assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../../../assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../../../assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="../../../assets/lib/select2/css/select2.min.css" rel="stylesheet">
+
+
+
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="../../../assets/css/custom.css">
+    <link rel="stylesheet" href="../../../assets/css/reward_sanction.css">
+    <link rel="stylesheet" href="../../../assets/css/dashforge.css">
+    <style>
+      *{
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+      }
+      body { -webkit-font-smoothing: antialiased; }
+      </style>
+  </head>
+  <body class="">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-white bd navbar-header-fixed pd-b-0">
+        <div class="container">
+          <a class="navbar-brand tx-bold tx-spacing--2 order-1" href="./index.html">            
+            <img src="../../../assets/img/connect.svg" alt="" class="img-fluid mr-4">
+          </a>
+          <button class="navbar-toggler order-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i data-feather="menu" class="wd-20 ht-20"></i>
+          </button>
+        
+          <div class="collapse navbar-collapse order-2" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active pb-2 mg-b-20 mg-lg-b-0">
+                <a class="nav-link header-link pd-b-0" href="./index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              
+            </ul>
+  
+            <ul class="navbar-nav ml-auto mr-5">
+              <li class="nav-item pd-t-10 pb-2">
+                <a href="http://" class="nav-link btn btn-sm btn-outline pd-y-2 w-lg-100 wd-md-100 logout-btn"><i data-feather="power" class="mr-2"></i>Sign out</a>
+              </li>
+              <li class="nav-item d-none d-md-none d-lg-block d-xl-block">
+                <a class="nav-link pb-2 navbar-brand navbar-right tx-bold tx-spacing--2 order-1 logo-link ml-5" href="/staff/home.html"><img src="../../../assets/img/logo.png" class="img-fluid"/></a>
+              </li>
+            </ul>
+  
+          </div>
+        </div>
+
+      </nav>
+    </header>
+    
+    <section class="secondary-bg">
+      <div class="container pt-md-5 mg-t-25 mg-md-t-0 mg-lg-t-35">
+        <button onclick="goBack()" class="btn btn-back tx-14 tx-semibold pd-l-0 pd-y-0"><i data-feather="arrow-left"></i> Go Back</button>
+        <p class="tx-32 tx-bold">Log New Sanction Request</p>
+      
+        <div>
+          <ul class="nav nav-line" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Individually</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bulk Upload</a>
+            </li>
+            <li class="nav-item">
+            </li>
+          </ul>
+          <div class="tab-content  bd-t-0 pd-y-20" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="card">
+                <div class="card-body pd-md-30">
+                  <form action="">
+                    <div class="row">
+                      <div class="col-lg-3 col-12  mg-md-t-0">
+                        <p class="tx-24 mb-0">Sanction Details</p>
+                      </div>
+                      <div class="col-lg-9 col-12 mg-t-20 mg-md-t-0">
+                          <div class="form-group">
+                            <label for="formGroupExampleInput" class="d-block tx-medium mb-1">Title</label>
+                            <input type="text" class="form-control input-bg" placeholder="Make the title succinct and recognisable">
+                          </div>
+                          <div class="form-group">
+                            <label for="formGroupExampleInput2" class="d-block tx-medium mb-1">Description/Justification</label>
+                            <textarea name="" id="" class="form-control input-bg" rows="3" placeholder="Describe the request here"></textarea>
+                          </div>
+    
+                          <div class="form-group">
+                            <label for="formGroupExampleInput2" class="d-block tx-medium mb-1">Upload Attachment <span class="tx-secondary"> (pdf, docs, xls, jpg, png)</span> </label>
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="customFile">
+                              <label class="custom-file-label" for="customFile"><img src="../../../assets/img/icon/upload.svg" class="mr-2"> Drop files here</label>
+                            </div>
+                            <div id="fileList"></div>
+                          </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-lg-3 col-12  mg-md-t-20">
+                        <p class="tx-24">Involved Employees</p>
+                      </div>
+                      <div class="col-lg-9 col-12 mg-t-20">
+                        <div class="form-group">
+                          <div class="row justify-content-between">
+                            <div class="col-md-6">
+                              <label for="formGroupExampleInput2" class="d-block tx-medium mb-1">Upload Affected Employees Data <span class="tx-secondary"> (cvs, xls)</span> </label>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="http://" class="btn tx-primary float-md-right tx-semibold tx-12"><img src="../../../assets/img/icon/inf.svg" alt="" srcset="">  Download Excel Template</a>
+                            </div>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile"><img src="../../../assets/img/icon/upload.svg" class="mr-2"> Drop files here</label>
+                          </div>
+                          <div id="fileList"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer bd-t-0 mg-t-30 pd-x-0">
+                <button type="button" class="btn btn-outlined-primary tx-semibold">Clear Contents</button>
+                <button type="button" class="btn btn-primary pd-x-70 tx-semibold" data-toggle="modal" data-target="#previewModal" data-dismiss="modal">Preview</button>
+              </div>
+              
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <h1>Bulk Upload</h1>
+              <p>...</p>
+            </div>
+            
+          </div>
+        </div>
+  
+       
+         <!--Preview Modal -->
+         <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header pd-t-25 pd-md-x-30 pd-x-20 pd-b-10">
+                <div>
+                  <p class="tx-22 tx-semibold modal-title" id="previewModalLabel">Review New Sanction Request</p>
+                  <p class="tx-12 tx-secondary mb-0">This process initiates a request to issue sanction to affected employee(s)</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div> 
+
+              <div class="modal-body pd-md-x-30 pd-x-20">
+               <div class="mg-b-25">
+                <label for="formGroupExampleInput" class="d-block tx-semibold mb-1 tx-grey-600 tx-uppercase tx-12">Title</label>
+                <p class="tx-14 tx-grey-900 mb-0">Unauthorized absence / insubordination</p>
+               </div>
+               <div class="mg-b-25">
+                  <label for="formGroupExampleInput" class="d-block tx-semibold mb-1 tx-grey-600 tx-uppercase tx-12">Description</label>
+                  <p class="tx-14 tx-grey-900">The indicted staff allegedly colluded with officials of some local government councils in Borno state to 
+                    divert salaries to accounts operated by the staff.
+                  </p>
+                </div>
+                <div class="mg-b-25">
+                  <label for="formGroupExampleInput" class="d-block tx-semibold mb-1 tx-grey-600 tx-uppercase tx-12">Attached Reports</label>
+                  <div class="card card-body pd-x-15 pd-y-9 bg-grey-50">
+                    <div class="row justify-content-between">
+                      <div class="col-9 col-md-9">
+                        <div class="d-flex">
+                          <img src="../../../assets/img/icon/pdf-file.svg" class="img-fluid mr-2" alt="" srcset="">
+                          <div>
+                            <p class="tx-14 tx-grey-900 mb-0">Investigation_report_424.pdf</p>
+                            <label for="" class="tx-12 tx-grey-500 mb-0">Mar 4, 2021 9:19 AM <span class="ml-4">453KB</span></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-3 col-md-2 pd-md-l-0">
+                        <a href="./view-open.html" class="btn btn-outlined-primary btn-sm pd-x-10 pd-y-4 tx-bold mg-t-5"> View</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mg-b-25">
+                  <label for="formGroupExampleInput" class="d-block tx-semibold mb-1 tx-grey-600 tx-uppercase tx-12">INVOLVED EMPLOYEEs DATA</label>
+                  <div class="card card-body pd-x-15 pd-y-9 bg-grey-50">
+                    <div class="row justify-content-between">
+                      <div class="col-9 col-md-9">
+                        <div class="d-flex">
+                          <img src="../../../assets/img/icon/pdf-file.svg" class="img-fluid mr-2" alt="" srcset="">
+                          <div>
+                            <p class="tx-14 tx-grey-900 mb-0">DC_04_employees_424.xlx</p>
+                            <label for="" class="tx-12 tx-grey-500 mb-0">Mar 4, 2021 9:19 AM <span class="ml-4">453KB</span></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-3 col-md-2 pd-md-l-0">
+                        <button class="btn btn-outlined-primary btn-sm pd-x-10 pd-y-4 tx-bold mg-t-5 float-right"> View</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+              </div>
+              <div class="modal-footer bg-modal-footer">
+                <button type="button" class="btn btn-outlined-primary btn-sm pd-x-40 tx-semibold" data-dismiss="modal">Edit</button>
+                <button type="button" class="btn btn-primary btn-sm pd-x-20 tx-semibold" data-toggle="modal" data-target="#successModal" data-dismiss="modal">Submit Sanction Request</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <!--success  Modal -->
+          <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header pd-y-10 bd-b-0">
+                  <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <div class="d-flex">
+                    <div>
+                      <img src="../../../assets/img/icon/Check.svg" alt="" srcset="" class="img-fluid wd-75 ht-75">
+                    </div>
+                    <div class="mg-l-10">
+                      <p class="tx-22 tx-bold mb-0 pd-t-20">Request Sent for Approval</p>
+                    </div>
+                  </div>
+                  <hr class="mg-t-10"/>
+                  <p class="tx-14">Notification and email has been sent to the authorizer for approval. The request will have a status of SUBMITTED till either approved or declined. </p>
+                </div>
+                <div class="modal-footer bg-modal-footer">
+                  <button type="button" class="btn btn-outlined-primary btn-sm pd-x-40" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+
+      </div>
+
+      
+       
+    </section>
+    <section class="footer text-white">
+      <div class="container">
+        <p class="p-14 mb-0 text-capitalize">&copy; 2020 UBA Group. All Rights Reserved.</p>
+      </div>
+    </section>
+  
+    <script src="../../../assets/lib/jquery/jquery.min.js"></script>
+    <script src="../../../assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/lib/feather-icons/feather.min.js"></script>
+    <script src="../../../assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../../../assets/js/dashforge.js"></script>
+    <script src="../../../assets/lib/js-cookie/js.cookie.js"></script>
+    <script src="../../../assets/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../../assets/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="../../../assets/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../../assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+    <script src="../../../assets/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="../../../assets/lib/select2/js/select2.min.js"></script>
+
+
+
+<script>
+      $(document).ready( function () {
+   $('.display').DataTable({
+     "paging": true,
+     "info": true,
+     "responsive": true,
+     "aoColumnDefs": [{
+         "bSortable": false,
+         "aTargets": ["no-sort"]
+     }],
+     "language": {
+          "searchPlaceholder": 'Search...',
+          "sSearch": '',
+          "lengthMenu": '_MENU_ items/page',
+        },
+     "bInfo": true
+   });
+   
+   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+     $('.display:visible').each( function(e) {
+       $(this).DataTable().columns.adjust().responsive.recalc();
+     });
+   });
+      });
+</script>
+<!-- form action  -->
+<script>
+  $(document).ready(function() {
+     $('#employee,#employe').select2({
+       width: '100%' ,
+     });
+
+     $(".custom-file-input").on("change", function() {
+     var fileName = $(this).val().split("\\").pop();
+     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+   });
+
+   
+ });
+</script>
+
+<script>
+   function goBack() {
+        window.history.back();
+      }
+     
+</script>
+
+  </body>
+</html>
